@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Gallery — FoodieHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="css/global.css"/>
+</head>
+<body>
+<!-- ===== NAVBAR (active Gallery) ===== -->
+<nav class="navbar" id="navbar"><div class="container"><a href="index.html" class="nav-logo">Foodie<span>Hub</span></a><div class="nav-links"><a href="index.html">Home</a><a href="about.html">Our Story</a><a href="menu.html">Menu</a><a href="events.html">Events</a><a href="gallery.html" class="active">Gallery</a><a href="reservation.html">Reservations</a><a href="contact.html">Contact</a><a href="admin.html" class="btn btn-primary btn-sm">Admin</a></div><div class="nav-actions"><button onclick="toggleSearch()"><i class="fas fa-search"></i></button><button onclick="toggleTheme()" class="theme-toggle"><i class="fas fa-moon" id="themeIcon"></i></button><button onclick="toggleCart()" style="font-size:1.2rem;"><i class="fas fa-shopping-bag"></i><span class="cart-badge" id="cartBadge">0</span></button><button class="hamburger" id="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></button></div></div></nav>
+<div class="mobile-nav" id="mobileNav"><a href="index.html">Home</a><a href="about.html">Our Story</a><a href="menu.html">Menu</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a><a href="reservation.html">Reservations</a><a href="contact.html">Contact</a><a href="admin.html" class="btn btn-primary">Admin Dashboard</a></div>
+<!-- ===== GALLERY CONTENT ===== -->
+<div class="container" style="padding-top:120px;">
+  <div class="section-header"><div class="section-divider"></div><h2 class="section-title">Our <span class="highlight">Gallery</span></h2><p class="section-subtitle">A visual feast — moments captured at FoodieHub.</p></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:32px;" id="galleryFilters">
+    <button class="btn btn-sm btn-primary" data-filter="all" onclick="filterGallery('all')">All</button>
+    <button class="btn btn-sm btn-outline" data-filter="food" onclick="filterGallery('food')">Food</button>
+    <button class="btn btn-sm btn-outline" data-filter="interiors" onclick="filterGallery('interiors')">Interiors</button>
+    <button class="btn btn-sm btn-outline" data-filter="chef" onclick="filterGallery('chef')">Chef</button>
+    <button class="btn btn-sm btn-outline" data-filter="events" onclick="filterGallery('events')">Events</button>
+  </div>
+  <div class="gallery-grid" id="galleryPageGrid"></div>
+</div>
+<!-- ===== FOOTER ===== -->
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="index.html" class="nav-logo">Foodie<span>Hub</span></a><p>Where every moment becomes a memory.</p></div><div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">Our Story</a><a href="menu.html">Menu</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a></div><div class="footer-col"><h4>Customer</h4><a href="reservation.html">Reservations</a><a href="contact.html">Contact</a><a href="#">Gift Cards</a><a href="#">FAQs</a></div><div class="footer-col footer-newsletter"><h4>Join the FoodieHub Circle</h4><p>Subscribe for exclusive offers.</p><div class="input-group"><input type="email" placeholder="Your email" id="newsletterEmail" /><button onclick="subscribeNewsletter()">Subscribe</button></div></div></div><div class="footer-bottom"><p>&copy; 2026 FoodieHub — The Art of Fine Dining</p><div class="social-links"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div><div class="legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div></div></div></footer>
+<script src="js/data.js"></script>
+<script src="js/global.js"></script>
+<script>
+  let currentGalleryFilter = 'all';
+  function renderGalleryPage() {
+    const grid = document.getElementById('galleryPageGrid');
+    const filtered = currentGalleryFilter === 'all' ? galleryData : galleryData.filter(g => g.category === currentGalleryFilter);
+    grid.innerHTML = filtered.map(item => `
+      <div class="gallery-item" onclick="openLightbox(${item.id})">
+        <div class="placeholder-img"><i class="fas fa-image"></i></div>
+        <div class="gallery-overlay">${item.label}</div>
+      </div>
+    `).join('');
+    document.querySelectorAll('#galleryFilters .btn').forEach(btn => {
+      btn.classList.toggle('btn-primary', btn.dataset.filter === currentGalleryFilter);
+      btn.classList.toggle('btn-outline', btn.dataset.filter !== currentGalleryFilter);
+    });
+  }
+  function filterGallery(cat) { currentGalleryFilter = cat; renderGalleryPage(); }
+  document.addEventListener('DOMContentLoaded', renderGalleryPage);
+</script>
+</body>
+</html>

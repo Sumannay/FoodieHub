@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story — FoodieHub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/global.css" />
+</head>
+
+<body>
+  <!-- ===== NAVBAR (same as index) ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Foodie<span>Hub</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">Our Story</a>
+        <a href="menu.html">Menu</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="reservation.html">Reservations</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html" class="btn btn-primary btn-sm">Admin</a>
+      </div>
+      <div class="nav-actions">
+        <button onclick="toggleSearch()"><i class="fas fa-search"></i></button>
+        <button onclick="toggleTheme()" class="theme-toggle"><i class="fas fa-moon" id="themeIcon"></i></button>
+        <button onclick="toggleCart()" style="font-size:1.2rem;">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="hamburger" id="hamburger"
+          onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <!-- ===== MOBILE NAV ===== -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">Our Story</a>
+    <a href="menu.html">Menu</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="reservation.html">Reservations</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html" class="btn btn-primary">Admin Dashboard</a>
+  </div>
+  <!-- ===== PAGE CONTENT ===== -->
+  <div class="container" style="padding-top:120px;">
+    <div class="section-header">
+      <div class="section-divider"></div>
+      <h2 class="section-title">Our <span class="highlight">Story</span></h2>
+    </div>
+    <div style="max-width:800px;margin:0 auto;text-align:center;">
+      <p style="font-size:1.15rem;font-weight:300;color:var(--color-text-muted);">FoodieHub was born from a simple
+        belief: that great food has the power to bring people together.</p>
+      <p style="font-weight:300;color:var(--color-text-muted);margin-bottom:32px;">Founded in 2026 by Chef Arjun Mehta,
+        FoodieHub is a celebration of India's rich culinary heritage, reimagined for the modern palate.</p>
+    </div>
+    <div style="max-width:720px;margin:40px auto;">
+      <h3 style="font-family:var(--font-serif);text-align:center;margin-bottom:24px;">Our Journey</h3>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div
+          style="display:flex;gap:20px;padding:16px 20px;background:var(--color-card);border-radius:var(--radius);border-left:3px solid var(--color-accent);">
+          <span style="font-weight:700;color:var(--color-accent);min-width:60px;">2026</span><span>FoodieHub opens in
+            Bhubaneswar</span></div>
+        <div
+          style="display:flex;gap:20px;padding:16px 20px;background:var(--color-card);border-radius:var(--radius);border-left:3px solid var(--color-accent);">
+          <span style="font-weight:700;color:var(--color-accent);min-width:60px;">2027</span><span>Best New Restaurant
+            Award</span></div>
+        <div
+          style="display:flex;gap:20px;padding:16px 20px;background:var(--color-card);border-radius:var(--radius);border-left:3px solid var(--color-accent);">
+          <span style="font-weight:700;color:var(--color-accent);min-width:60px;">2028</span><span>Private Dining &
+            Chef's Table launched</span></div>
+        <div
+          style="display:flex;gap:20px;padding:16px 20px;background:var(--color-card);border-radius:var(--radius);border-left:3px solid var(--color-accent);">
+          <span style="font-weight:700;color:var(--color-accent);min-width:60px;">2029</span><span>Top 10 Fine Dining in
+            India</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- ===== FOOTER (same as index) ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html" class="nav-logo">Foodie<span>Hub</span></a>
+          <p>Where every moment becomes a memory.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">Our Story</a><a
+            href="menu.html">Menu</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+        </div>
+        <div class="footer-col">
+          <h4>Customer</h4><a href="reservation.html">Reservations</a><a href="contact.html">Contact</a><a href="#">Gift
+            Cards</a><a href="#">FAQs</a>
+        </div>
+        <div class="footer-col footer-newsletter">
+          <h4>Join the FoodieHub Circle</h4>
+          <p>Subscribe for exclusive offers.</p>
+          <div class="input-group"><input type="email" placeholder="Your email" id="newsletterEmail" /><button
+              onclick="subscribeNewsletter()">Subscribe</button></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 FoodieHub — The Art of Fine Dining</p>
+        <div class="social-links"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
+              class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+        <div class="legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+      </div>
+    </div>
+  </footer>
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/data.js"></script>
+  <script src="js/global.js"></script>
+</body>
+
+</html>
